@@ -11,6 +11,8 @@ export class App extends PureComponent {
   }
 
   getNativeDOM() {
+    // 1.方式一 不推荐
+    console.log(this.refs.why);
     // 2.方式二: 提前创建好ref对象, createRef(), 将创建出来的对象绑定到元素
     // console.log(this.titleRef.current);
 
@@ -22,7 +24,9 @@ export class App extends PureComponent {
     return (
       <div>
         <h2 ref="why">Hello world</h2>
+
         <h2 ref={this.titleRef}>你好啊，李银河</h2>
+
         <h2 ref={(el) => (this.titleEl = el)}>你好啊，师姐</h2>
         <button onClick={(e) => this.getNativeDOM()}>获取DOM</button>
       </div>
