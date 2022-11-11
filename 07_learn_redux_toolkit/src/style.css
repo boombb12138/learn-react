@@ -1,0 +1,7 @@
+.pages {
+    display: flex;
+}
+
+.pages>div {
+    flex: 1
+}

@@ -32,7 +32,7 @@
 
 
 
-## :five: Redux​
+## :five: Redux
 
 
 
