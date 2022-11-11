@@ -32,8 +32,10 @@
 
 
 
+
+
 ## :five: Redux
 
 ![Redux](https://user-images.githubusercontent.com/95857565/199880750-0b939f01-5c2d-4daa-8b43-ab9b5d8156cb.png)
 
-
+![Redux](https://user-images.githubusercontent.com/95857565/199880750-0b939f01-5c2d-4daa-8b43-ab9b5d8156cb.png)
