@@ -1,5 +1,5 @@
 import React, { PureComponent } from "react";
-
+import { withRouter } from "../hoc";
 export class HomeSongMenu extends PureComponent {
   constructor(props) {
     super(props);
@@ -12,7 +12,8 @@ export class HomeSongMenu extends PureComponent {
     };
   }
   NavigateToDetail(id) {
-    console.log(id);
+    const { navigate } = this.props.router;
+    navigate("/detail/" + id);
   }
   render() {
     const { songMenus } = this.state;
@@ -34,4 +35,4 @@ export class HomeSongMenu extends PureComponent {
   }
 }
 
-export default HomeSongMenu;
+export default withRouter(HomeSongMenu);
