@@ -1,27 +1,36 @@
 import React, { memo, useEffect } from "react";
-import { useState } from "react";
-import QnRequest from "@/services/request/index";
 
+import HomeBanner from "./c-cpns/home-banner";
+import { HomeWrapper } from "./style";
+import { shallowEqual, useDispatch, useSelector } from "react-redux";
+import { fetchHomeDataAction } from "@/store/modules/home";
+import SectionHeader from "@/components/section-header";
+import SectionRooms from "@/components/section-rooms";
 const Home = memo(() => {
-  const [highScore, setHighScore] = useState({});
+  // 通过useSelector获取数据
+  const { goodPriceInfo } = useSelector(
+    (state) => ({
+      goodPriceInfo: state.home.goodPriceInfo,
+    }),
+    shallowEqual
+  );
 
+  // 在组件中的useEffect通过dispatch派发异步事件
+  const dispatch = useDispatch();
   useEffect(() => {
-    QnRequest.get({ url: "/home/highscore" }).then((res) => {
-      console.log(res);
-      setHighScore(res);
-    });
-  }, []);
+    dispatch(fetchHomeDataAction("xxxx"));
+  }, [dispatch]);
 
   return (
-    <div>
-      <h2>{highScore.title}</h2>
-      <h2>{highScore.subtitle}</h2>
-      <ul>
-        {highScore.list?.map((item) => {
-          return <li key={item.id}>{item.name}</li>;
-        })}
-      </ul>
-    </div>
+    <HomeWrapper>
+      <HomeBanner />
+      <div className="content">
+        <div className="good-price">
+          <SectionHeader title={goodPriceInfo.title} />
+          <SectionRooms roomList={goodPriceInfo.list} />
+        </div>
+      </div>
+    </HomeWrapper>
   );
 });
 

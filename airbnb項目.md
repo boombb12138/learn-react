@@ -133,4 +133,119 @@ styleStrToObject可以将style中字符串转成对象（在谷歌中用英语�
 
 
 
-到04
+svg图片使用到了styleStrToObject 将网页复制下来的svg中字符串样式转为对象
+
+
+
+阴影 动画 抽取
+
+```
+ ${(props) => props.theme.mixin.boxShadow}
+```
+
+
+
+### 点击出现panel栏
+
+一定是绝对定位 高度由内部元素撑起，不设置固定值
+
+切换显示、隐藏：showPanel值 再写事件处理函数  
+
+隐藏：监听点击 是在useEffect 监听window的点击，这样在其他地方仍然可以交互；在捕获阶段 
+
+
+
+### 主页
+
+#### banner
+
+引入图片时 url
+
+在react中引入图片的方法
+
+1. 需要import 然后传入src或url 因为webpack打包后图片的路径不再是原来
+
+2. ```
+   background:url(${require("图片路径")})
+   ```
+
+
+
+#### 中间的内容
+
+直接子元素 >   避免类名重复导致样式被错误应用
+
+##### 网络请求获取数据的过程
+
+修改state要通过reducer
+
+在组件中的useEffect通过dispatch派发异步事件 
+
+  redux中（store文件夹）通过createAsyncThunk调用网络请求方法得到数据 
+
+在组件中的useEffect通过dispatch派发异步事件  通过useSelector获取数据
+
+##### 数据展示
+
+小的组件放到components
+
+rmcp会增加propTypes对传入的参数做类型验证
+
+
+
+### footer部分
+
+直接看代码
+
+
+
+### room-item组件
+
+总的是弹性布局，可以换行
+
+第一次没有数据 就给map之前的数据后面加上?
+
+只展示前8条数据：用slice
+
+**间距：**一行排4个 每个width是25% border-box 然后间距用padding撑开 最右和最左的左边距和右边距在最外层的盒子用margin:0 -数值 向左移动
+
+##### 除了padding之外做一个inner div
+
+先搭html结构展示数据
+
+好评星星用UI库：
+
+**服务器给的图片的比例不一样** 宽度100% 高度就会不一致 
+
+使用padding让高度是宽度的2/3 图片绝对定位
+
+```
+ .cover {
+    position: relative;
+    box-sizing: border-box;
+    padding: 66.6% 8px 0;
+    border-radius: 3px;
+    overflow: hidden;
+
+    img {
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+    }
+  }
+```
+
+文本的颜色由服务器决定 服务器会返回颜色：
+
+给ItemWrapper传入服务器返回的数据
+
+
+
+到14_(掌握)项目-首页-房间item的布局的展示过程
+
+
+
+
+
