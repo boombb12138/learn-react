@@ -1,8 +1,10 @@
 import styled from "styled-components";
 
 export const ItemWrapper = styled.div`
+  /* flex-shrink 属性指定了 flex 元素的收缩规则。flex 元素仅在默认宽度之和大于容器的时候才会发生收缩，其收缩的大小是依据 flex-shrink 的值。 */
+  flex-shrink: 0;
   box-sizing: border-box;
-  width: 25%;
+  width: ${(props) => props.itemWidth};
   padding: 8px;
 
   .inner {
@@ -45,5 +47,21 @@ export const ItemWrapper = styled.div`
 
   .price {
     margin: 8px 0;
+  }
+
+  .bottom {
+    display: flex;
+    align-items: center;
+    font-size: 12px;
+    font-weight: 600;
+    color: ${(props) => props.theme.text.primaryColor};
+
+    .count {
+      margin: 0 2px 0 4px;
+    }
+
+    .MuiRating-decimal {
+      margin-right: -2px;
+    }
   }
 `;
